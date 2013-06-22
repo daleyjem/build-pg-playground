@@ -3,16 +3,19 @@
 	<head>
     	<title>PhoneGap Build Playground</title>
         <script src="phonegap.js"></script>
+        <script src="PushNotification.js"></script>
     </head>
     <body>
     	<button onclick="navigator.notification.vibrate(1000); ">Vibrate 1s</button>
         <button onclick="navigator.notification.vibrate(2000); ">Vibrate 2s</button>
         <button onclick="navigator.notification.vibrate(5000); ">Vibrate 5s</button>
+        <button onclick="navigator.notification.beep(2); ">Beep 2x</button>
         <br />
         <button id="btnGps">
         	Get current GPS
         </button>
         <p id="label1"></p>
+        <button onclick="">Send Push Notification</button>
         <script>
         	var btnGps = document.getElementById('btnGps');
 			var label1 = document.getElementById('label1');
