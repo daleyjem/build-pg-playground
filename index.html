@@ -28,14 +28,20 @@
 			}
 			
 			window.setInterval(function(){
-				navigator.accelerometer.getCurrentAcceleration(
-					function(ac){
-						accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
-					}, 
-					function(){
-						//Do Nothing}
-					}
-				);
+				try
+				{
+					navigator.accelerometer.getCurrentAcceleration(
+						function(ac){
+							accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
+						}, 
+						function(){
+							//Do Nothing}
+						}
+					);
+				} catch(e)
+				{
+					// Do nothing
+				}
 			}, 100);
         </script>
     </body>
