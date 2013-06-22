@@ -27,20 +27,20 @@
 				});
 			}
 			
+			var isGettingAcc = false;
 			window.setInterval(function(){
-				try
+				if (!isGettingAcc)
 				{
+					isGettingAcc = true;
 					navigator.accelerometer.getCurrentAcceleration(
 						function(ac){
 							accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
+							isGettingAcc = false;
 						}, 
 						function(){
-							//Do Nothing}
+							isGettingAcc = false;
 						}
 					);
-				} catch(e)
-				{
-					// Do nothing
 				}
 			}, 100);
         </script>
