@@ -27,22 +27,14 @@
 				});
 			}
 			
-			var isGettingAcc = false;
-			window.setInterval(function(){
-				if (!isGettingAcc)
-				{
-					isGettingAcc = true;
-					navigator.accelerometer.getCurrentAcceleration(
-						function(ac){
-							accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
-							isGettingAcc = false;
-						}, 
-						function(){
-							isGettingAcc = false;
-						}
-					);
+			navigator.accelerometer.watchAcceleration(
+				function(ac){
+					accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
+				}, 
+				function(){
+					// Do nothing
 				}
-			}, 100);
+			);
         </script>
     </body>
 </html>
