@@ -16,26 +16,28 @@
         <p id="label1" style="height:2em; "></p>
         <div id="accel-stat">x:0, y:0, z:0</div>
         <script>
-        	var btnGps = document.getElementById('btnGps');
-			var label1 = document.getElementById('label1');
-			var accelStat = document.getElementById('accel-stat');
-			
-			btnGps.onclick = function()
-			{
-				navigator.geolocation.getCurrentPosition(function(pos){
-					label1.innerHTML = pos.coords.latitude + ', ' + pos.coords.longitude;
-				});
-			}
-			
-			navigator.accelerometer.watchAcceleration(
-				function(ac){
-					accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
-				}, 
-				function(){
-					// Do nothing
-				},
-				{frequency:100}
-			);
+			document.addEventListener('deviceready', function(){
+				var btnGps = document.getElementById('btnGps');
+				var label1 = document.getElementById('label1');
+				var accelStat = document.getElementById('accel-stat');
+				
+				btnGps.onclick = function()
+				{
+					navigator.geolocation.getCurrentPosition(function(pos){
+						label1.innerHTML = pos.coords.latitude + ', ' + pos.coords.longitude;
+					});
+				}
+				
+				navigator.accelerometer.watchAcceleration(
+					function(ac){
+						accelStat.innerHTML = 'x:' + ac.x + ', y:' + ac.y + ', z:' + ac.z;
+					}, 
+					function(){
+						// Do nothing
+					},
+					{frequency:100}
+				);
+			});
         </script>
     </body>
 </html>
